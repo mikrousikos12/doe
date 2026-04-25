@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DECRYPT OR ELSE | D.O.E.</title>
+    <title>DECRYPT OR ELSE | A MINI GAME BY MIKROUSIKOS12</title>
     <style>
         :root {
             --blood-red: #ff4757;
@@ -64,9 +64,15 @@
         .btn-download:hover { transform: translateY(-5px); box-shadow: 0 20px 0 #b33939; background: #ff6b81; }
         .btn-download:active { transform: translateY(2px); box-shadow: 0 5px 0 #b33939; }
 
-        /* Story & Gameplay Sections */
-        .main-content { max-width: 1000px; margin: auto; padding: 80px 20px; }
+        .defender-notice {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            max-width: 400px;
+        }
 
+        /* Content Sections */
+        .main-content { max-width: 1000px; margin: auto; padding: 80px 20px; }
         .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         .fancy-box {
@@ -74,7 +80,6 @@
             padding: 40px;
             border-radius: 4px;
             border: 1px solid #222;
-            position: relative;
         }
         .fancy-box h2 { color: var(--blood-red); font-size: 2rem; margin-top: 0; }
 
@@ -82,7 +87,7 @@
         .feature-list li { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; }
         .feature-list li::before { content: "✔"; color: var(--success-green); margin-right: 15px; font-weight: bold; }
 
-        /* System Requirements */
+        /* Requirements */
         .specs-panel {
             margin-top: 60px;
             background: #000;
@@ -90,7 +95,6 @@
             border-left: 10px solid var(--blood-red);
         }
         .specs-panel h2 { margin-top: 0; letter-spacing: 2px; }
-
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .spec-item { border-bottom: 1px solid #222; padding-bottom: 10px; }
         .spec-label { color: var(--blood-red); font-weight: bold; display: block; font-size: 0.9rem; }
@@ -105,27 +109,33 @@
         <div style="font-size: 1.5rem; font-weight: 300;">DECRYPT OR ELSE</div>
         
         <div class="dl-badge">
-            <span id="dl-count">...</span> TOTAL DOWNLOADS
+            <span id="dl-count">0</span> DOWNLOADS
         </div>
 
-        <a href="https://github.com/mikrousikos12/doe/releases/download/alpha_ver/D.O.E.V0.1.Github.zip" class="btn-download">GET LATEST VERSION (V0.1)</a>
+        <!-- ΤΟ ΔΙΚΟ ΣΟΥ DIRECT DOWNLOAD LINK -->
+        <a href="https://github.com/mikrousikos12/doe/releases/download/alpha_ver/D.O.E.V0.1.Github.zip" class="btn-download">GET LATEST VERSION</a>
+        
+        <div class="defender-notice">
+            Note: If Windows flags the file, click "More Info" -> "Run Anyway". 
+            This is normal for unsigned indie games.
+        </div>
     </header>
 
     <div class="main-content">
         <div class="game-grid">
             <div class="fancy-box">
                 <h2>The Story</h2>
-                <p>Imagine this: You're at your desk, just another boring day at <strong>Decryption Suite Corp</strong>. You get a bit too curious and install some rival software to "see what's up".</p>
-                <p>Bad move. It's a virus. Now your battery is dying faster than you can blink, and that virus is chewing through your company's secret files. If your laptop shuts off, you're <strong>Cooked</strong>. You're fired. Gone.</p>
+                <p>You work at <strong>Decryption Suite Corp</strong>. You got curious and installed a rival company's app to "study" it. Big mistake.</p>
+                <p>It's a virus. Your battery is draining fast, and company files are being deleted. If the laptop shuts off, you're <strong>toast</strong>. Find the master key and save your job!</p>
             </div>
             
             <div class="fancy-box">
                 <h2>How to Play</h2>
                 <ul class="feature-list">
-                    <li>Dig through folders to find 3 hidden keys.</li>
-                    <li>Move the virus boxes out of your face.</li>
-                    <li>Plug and unplug your charger to survive.</li>
-                    <li>Decrypt the system before it's too late!</li>
+                    <li>Search folders for 3 hidden keys.</li>
+                    <li>Drag virus boxes out of your way.</li>
+                    <li>Plug and unplug charger to survive.</li>
+                    <li>Decrypt the system to win!</li>
                 </ul>
             </div>
         </div>
@@ -161,13 +171,17 @@
                 const res = await fetch(`https://github.com{user}/${repo}/releases`);
                 const data = await res.json();
                 let total = 0;
-                data.forEach(release => {
-                    if(release.assets) {
-                        release.assets.forEach(asset => total += asset.download_count);
-                    }
-                });
+                
+                if (data && Array.isArray(data)) {
+                    data.forEach(release => {
+                        if(release.assets) {
+                            release.assets.forEach(asset => total += asset.download_count);
+                        }
+                    });
+                }
                 document.getElementById('dl-count').innerText = total.toLocaleString();
-            } catch {
+            } catch (e) {
+                console.error("Error fetching downloads:", e);
                 document.getElementById('dl-count').innerText = "0";
             }
         }
