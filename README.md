@@ -14,3 +14,9 @@ You must navigate through your corrupted file system, bypass the malware interfe
 FIND THE KEYS: Search through folders for the ✨ Signal Signatures.
 SURVIVE THE MALWARE: Drag and close the terminal breaches before they drain your power.
 DECRYPT OR ELSE: Enter the final code in the Decryptor to save your job and the company.
+
+
+⚠️❌WARNING!!!⚠️❌
+
+OUR GAME DOES NOT HAVE A VIRUS THE FOLLOWING ANIVIRUSES FLAG IT BY MISTAKE FROM THE AI LEARNING!!! Virustotal : https://www.virustotal.com/gui/file/ecaaba043d54d67fe36f0e7414c8396eee5a5e216c61de4c171f5f543a3a4b49/detection
+ANTIVIrUSES THAT FLAG OUR GAME : Bkav Pro , Gridinsoft (no cloud) , Microsoft , SecureAge
