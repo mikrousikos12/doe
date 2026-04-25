@@ -20,3 +20,5 @@ DECRYPT OR ELSE: Enter the final code in the Decryptor to save your job and the 
 
 OUR GAME DOES NOT HAVE A VIRUS THE FOLLOWING ANIVIRUSES FLAG IT BY MISTAKE FROM THE AI LEARNING!!! Virustotal : https://www.virustotal.com/gui/file/ecaaba043d54d67fe36f0e7414c8396eee5a5e216c61de4c171f5f543a3a4b49/detection
 ANTIVIrUSES THAT FLAG OUR GAME : Bkav Pro , Gridinsoft (no cloud) , Microsoft , SecureAge
+
+YOU CAN SEE FOR YOURSELF THAT THE ORIGINAL .PY FILE BEFORE COMPILING WITH PYINSTALLER WAS WITHOUT VIRUSES!! : https://www.virustotal.com/gui/file/c4be27dc49db7c99e19b3d7eafda0735347771ed6a12448b9db04bb220a2df51?nocache=1
